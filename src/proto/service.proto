@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+// TODO: define rpc func and corresponding request/response in service Score
+// 1. commit score
+// 2. query record
+// 3. query health of other nodes
+
+service Score {
+    // rpc AddWord(AddWordRequest) returns (AddWordResponse) {}
+    // rpc GetWords(GetWordsRequest) returns (GetWordsResponse) {}
+}
+
+// message AddWordRequest {
+//     string word = 1;
+// }
+
+// message AddWordResponse {
+//     uint64 commit_index = 1;
+// }
+
+// message GetWordsRequest {
+// }
+
+// message GetWordsResponse {
+//     uint64 read_at_index = 1;
+//     repeated string best_words = 2;
+// }
