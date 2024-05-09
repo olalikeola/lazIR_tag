@@ -2,6 +2,8 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
+package lazIR_tag;
+
 service RaftTransport {
   // AppendEntriesPipeline opens an AppendEntries message stream.
   rpc AppendEntriesPipeline(stream AppendEntriesRequest) returns (stream AppendEntriesResponse) {}

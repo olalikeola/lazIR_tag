@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package lazIR_tag;
+
 // TODO: define rpc func and corresponding request/response in service Score
 // 1. commit score
 // 2. query record
