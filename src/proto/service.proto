@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = "github.com/Darkhunter9/lazIR_tag/src/proto/service";
+
 package lazIR_tag;
 
 // TODO: define rpc func and corresponding request/response in service Score
