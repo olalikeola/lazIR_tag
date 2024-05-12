@@ -1,31 +1,28 @@
 syntax = "proto3";
 
-option go_package = "github.com/Darkhunter9/lazIR_tag/src/proto/service";
+option go_package = "github.com/Darkhunter9/lazIR_tag/src/proto";
 
 package lazIR_tag;
 
-// TODO: define rpc func and corresponding request/response in service Score
-// 1. commit score
-// 2. query record
-// 3. query health of other nodes
-
 service Score {
-    // rpc AddWord(AddWordRequest) returns (AddWordResponse) {}
-    // rpc GetWords(GetWordsRequest) returns (GetWordsResponse) {}
+    rpc AddRecord(AddRecordRequest) returns (AddRecordResponse) {}
+    rpc GetRecord(GetRecordRequest) returns (GetRecordResponse) {}
+
 }
 
-// message AddWordRequest {
-//     string word = 1;
-// }
+message AddRecordRequest {
+    string shooter = 1;
+    string victim = 2;
+}
 
-// message AddWordResponse {
-//     uint64 commit_index = 1;
-// }
+message AddRecordResponse {
+    uint64 commit_index = 1;
+}
 
-// message GetWordsRequest {
-// }
+message GetRecordRequest {
+}
 
-// message GetWordsResponse {
-//     uint64 read_at_index = 1;
-//     repeated string best_words = 2;
-// }
+message GetRecordResponse {
+    uint64 read_at_index = 1;
+    map<string, int32> score = 2;
+}
