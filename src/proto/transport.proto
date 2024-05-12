@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/Darkhunter9/lazIR_tag/src/proto/transport";
+option go_package = "github.com/Darkhunter9/lazIR_tag/src/proto";
 
 import "google/protobuf/timestamp.proto";
 
