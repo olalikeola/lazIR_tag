@@ -19,7 +19,7 @@ type scoreTracker struct {
 	// TODO: consider using sync.Map
 	mtx   sync.RWMutex
 	node  string
-	score map[string]int
+	score map[string]int32
 }
 
 var _ raft.FSM = &scoreTracker{}
@@ -38,7 +38,7 @@ func (f *scoreTracker) Apply(l *raft.Log) interface{} {
 
 func (f *scoreTracker) Snapshot() (raft.FSMSnapshot, error) {
 	// Make sure that any future calls to f.Apply() don't change the snapshot.
-	score := make(map[string]int)
+	score := make(map[string]int32)
 	for k, v := range f.score {
 		score[k] = v
 	}
@@ -60,7 +60,7 @@ func (f *scoreTracker) Restore(r io.ReadCloser) error {
 }
 
 type snapshot struct {
-	score map[string]int
+	score map[string]int32
 }
 
 func (s *snapshot) Persist(sink raft.SnapshotSink) error {
@@ -85,22 +85,29 @@ type rpcInterface struct {
 	raft         *raft.Raft
 }
 
-// TODO: implement rpc defined in service.proto under rpcInterface
-func (r rpcInterface) AddWord(ctx context.Context, req *pb.AddWordRequest) (*pb.AddWordResponse, error) {
-	f := r.raft.Apply([]byte(req.GetWord()), time.Second)
+func (r rpcInterface) AddRecord(ctx context.Context, req *pb.AddRecordRequest) (*pb.AddRecordResponse, error) {
+	shooter := req.GetShooter()
+	victim := req.GetVictim()
+	f := r.raft.Apply([]byte(shooter+" "+victim), time.Second)
 	if err := f.Error(); err != nil {
 		return nil, rafterrors.MarkRetriable(err)
 	}
-	return &pb.AddWordResponse{
+	return &pb.AddRecordResponse{
 		CommitIndex: f.Index(),
 	}, nil
 }
 
-func (r rpcInterface) GetWords(ctx context.Context, req *pb.GetWordsRequest) (*pb.GetWordsResponse, error) {
-	r.wordTracker.mtx.RLock()
-	defer r.wordTracker.mtx.RUnlock()
-	return &pb.GetWordsResponse{
-		BestWords:   cloneWords(r.wordTracker.words),
+func (r rpcInterface) Getrecord(ctx context.Context, req *pb.GetRecordRequest) (*pb.GetRecordResponse, error) {
+	r.scoreTracker.mtx.RLock()
+	defer r.scoreTracker.mtx.RUnlock()
+
+	score := make(map[string]int32)
+	for k, v := range r.scoreTracker.score {
+		score[k] = v
+	}
+
+	return &pb.GetRecordResponse{
+		Score:       score,
 		ReadAtIndex: r.raft.AppliedIndex(),
 	}, nil
 }
