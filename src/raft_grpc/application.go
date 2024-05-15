@@ -97,7 +97,7 @@ func (r rpcInterface) AddRecord(ctx context.Context, req *pb.AddRecordRequest) (
 	}, nil
 }
 
-func (r rpcInterface) Getrecord(ctx context.Context, req *pb.GetRecordRequest) (*pb.GetRecordResponse, error) {
+func (r rpcInterface) GetRecord(ctx context.Context, req *pb.GetRecordRequest) (*pb.GetRecordResponse, error) {
 	r.scoreTracker.mtx.RLock()
 	defer r.scoreTracker.mtx.RUnlock()
 
