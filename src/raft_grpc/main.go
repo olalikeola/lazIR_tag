@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	pb "proto/lazIR_tag"
+	pb "github.com/Darkhunter9/lazIR_tag/src/proto"
 
 	"github.com/Jille/raft-grpc-leader-rpc/leaderhealth"
 	transport "github.com/Jille/raft-grpc-transport"
