@@ -19,7 +19,7 @@ set(_GRPC_GRPCPP gRPC::grpc++)
 set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
 
 # Proto file
-get_filename_component(proto "src/proto/transport.proto" ABSOLUTE)
+get_filename_component(proto "src/proto/service.proto" ABSOLUTE)
 get_filename_component(proto_path "${proto}" PATH)
 message(STATUS "${proto}")
 message(STATUS "${proto_path}")
@@ -27,15 +27,15 @@ message(STATUS "${proto_path}")
 # Generated sources
 message(STATUS "${CMAKE_CURRENT_BINARY_DIR}")
 
-set(proto_srcs "${proto_path}/transport.pb.cc")
-set(proto_hdrs "${proto_path}/transport.pb.h")
-set(grpc_srcs "${proto_path}/transport.grpc.pb.cc")
-set(grpc_hdrs "${proto_path}/transport.grpc.pb.h")
+set(proto_srcs "${proto_path}/../proto_c/service.pb.cc")
+set(proto_hdrs "${proto_path}/../proto_c/service.pb.h")
+set(grpc_srcs "${proto_path}/../proto_c/service.grpc.pb.cc")
+set(grpc_hdrs "${proto_path}/../proto_c/service.grpc.pb.h")
 add_custom_command(
       OUTPUT "${proto_srcs}" "${proto_hdrs}" "${grpc_srcs}" "${grpc_hdrs}"
       COMMAND ${_PROTOBUF_PROTOC}
-      ARGS --grpc_out "${proto_path}"
-        --cpp_out "${proto_path}"
+      ARGS --grpc_out "${proto_path}/../proto_c"
+        --cpp_out "${proto_path}/../proto_c"
         -I "${proto_path}"
         --plugin=protoc-gen-grpc="${_GRPC_CPP_PLUGIN_EXECUTABLE}"
         "${proto}"

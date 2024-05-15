@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	pb "proto/lazIR_tag"
+	pb "github.com/Darkhunter9/lazIR_tag/src/proto"
 
 	"github.com/Jille/raft-grpc-leader-rpc/leaderhealth"
 	transport "github.com/Jille/raft-grpc-transport"
@@ -47,16 +47,16 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	wt := &wordTracker{}
+	wt := &scoreTracker{}
 
 	r, tm, err := NewRaft(ctx, *raftId, *myAddr, wt)
 	if err != nil {
 		log.Fatalf("failed to start raft: %v", err)
 	}
 	s := grpc.NewServer()
-	pb.RegisterExampleServer(s, &rpcInterface{
-		wordTracker: wt,
-		raft:        r,
+	pb.RegisterScoreServer(s, &rpcInterface{
+		scoreTracker: wt,
+		raft:         r,
 	})
 	tm.Register(s)
 	leaderhealth.Setup(r, s, []string{"Example"})
