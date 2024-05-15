@@ -81,6 +81,7 @@ func (s *snapshot) Release() {
 }
 
 type rpcInterface struct {
+	pb.UnimplementedScoreServer
 	scoreTracker *scoreTracker
 	raft         *raft.Raft
 }
