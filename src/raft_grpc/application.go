@@ -53,7 +53,7 @@ func (f *scoreTracker) Restore(r io.ReadCloser) error {
 	scores := strings.Split(string(b), " ")
 	for i := range len(scores) / 2 {
 		if s, err := strconv.Atoi(scores[2*i+1]); err == nil {
-			f.score[scores[2*i]] = s
+			f.score[scores[2*i]] = int32(s)
 		}
 	}
 	return nil
