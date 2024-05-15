@@ -1,8 +1,9 @@
 module github.com/Darkhunter9/lazIR_tag/src/raft_grpc
 
 go 1.22.2
+
 require (
-	github.com/Darkhunter9/lazIR_tag/src/proto v0.0.0-20240515085012-1de54e48666e
+	github.com/Darkhunter9/lazIR_tag/src/proto v0.0.0-20240515095513-525203b33752
 	github.com/Jille/grpc-multi-resolver v1.3.0
 	github.com/Jille/raft-grpc-leader-rpc v1.1.0
 	github.com/Jille/raft-grpc-transport v1.4.0
