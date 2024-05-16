@@ -39,6 +39,7 @@ func main() {
 	defer conn.Close()
 	c := pb.NewScoreClient(conn)
 
+	fmt.Println("Varun just shot Rahul!")
 	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "Varun", Victim: "Rahul"})
 
 	//sleep for 10 seconds
