@@ -18,7 +18,6 @@ import (
 
 func main() {
 
-	fmt.Println("Hey all, very good morning, init?")
 	serviceConfig := `{"healthCheckConfig": {"serviceName": "Example"}, "loadBalancingConfig": [ { "round_robin": {} } ]}`
 	retryOpts := []grpc_retry.CallOption{
 		grpc_retry.WithBackoff(grpc_retry.BackoffExponential(100 * time.Millisecond)),
@@ -43,9 +42,7 @@ func main() {
 	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "Varun", Victim: "Rahul"})
 
 	//sleep for 10 seconds
-	fmt.Println("The morning was pretty good, time for an afternoon nap...")
 	time.Sleep(10 * time.Second)
-	fmt.Println("Here I am back up and runnning like I never went to sleep!")
 
 	resp, err := c.GetRecord(ctx, &pb.GetRecordRequest{})
 	fmt.Println(resp)
