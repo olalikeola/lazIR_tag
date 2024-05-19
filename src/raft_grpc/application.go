@@ -30,6 +30,21 @@ func (f *scoreTracker) Apply(l *raft.Log) interface{} {
 	log := strings.Split(string(l.Data), " ")
 	a, b := log[0], log[1]
 	fmt.Printf("Node %s: %s get 1 from %s", f.node, a, b)
+	//check if map is not null, if it is, initialize it
+	if f.score == nil {
+		f.score = make(map[string]int32)
+	}
+	//check if keys a, b are already in map
+	//if not, add them with score 0
+
+	if _, ok := f.score[a]; !ok {
+		f.score[a] = 0
+	}
+
+	if _, ok := f.score[b]; !ok {
+		f.score[b] = 0
+	}
+
 	f.score[a]++
 	f.score[b]--
 
