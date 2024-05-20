@@ -20,8 +20,6 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-// TODO: replace application with scoreTracker
-
 var (
 	myAddr = flag.String("address", "localhost:50051", "TCP host+port for this node")
 	raftId = flag.String("raft_id", "", "Node id used by Raft")
@@ -59,7 +57,7 @@ func main() {
 		raft:         r,
 	})
 	tm.Register(s)
-	leaderhealth.Setup(r, s, []string{"Example"})
+	leaderhealth.Setup(r, s, []string{"Score"})
 	raftadmin.Register(s, r)
 	reflection.Register(s)
 	if err := s.Serve(sock); err != nil {
