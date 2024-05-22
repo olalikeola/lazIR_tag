@@ -29,7 +29,6 @@ func (f *scoreTracker) Apply(l *raft.Log) interface{} {
 	defer f.mtx.Unlock()
 	log := strings.Split(string(l.Data), " ")
 	a, b := log[0], log[1]
-	fmt.Printf("Node %s: %s get 1 from %s", f.node, a, b)
 	//check if map is not null, if it is, initialize it
 	if f.score == nil {
 		f.score = make(map[string]int32)
@@ -38,16 +37,26 @@ func (f *scoreTracker) Apply(l *raft.Log) interface{} {
 	//if not, add them with score 0
 
 	if _, ok := f.score[a]; !ok {
-		f.score[a] = 0
+		f.score[a] = 3
 	}
 
 	if _, ok := f.score[b]; !ok {
-		f.score[b] = 0
+		f.score[b] = 3
 	}
 
-	f.score[a]++
-	f.score[b]--
-
+	// check if the players are dead
+	if f.score[a] == 0 || f.score[b] == 0 {
+		if f.score[a] == 0 {
+			fmt.Printf("Node %s: %s tried to shoot %s but %s is already dead!", f.node, a, b, a)
+		}
+		if f.score[b] == 0 {
+			fmt.Printf("Node %s: %s tried to shoot %s but %s is already dead!", f.node, a, b, b)
+		}
+	} else {
+		fmt.Printf("Node %s: %s get 1 from %s", f.node, a, b)
+		f.score[a]++
+		f.score[b]--
+	}
 	return nil
 }
 
