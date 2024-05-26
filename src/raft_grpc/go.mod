@@ -9,7 +9,9 @@ require (
 	github.com/Jille/raftadmin v1.2.0
 	github.com/hashicorp/raft v1.5.0
 	github.com/hashicorp/raft-boltdb v0.0.0-20230125174641-2a8082862702
+	golang.org/x/exp v0.0.0-20240525044651-4c93da0ed11d
 	google.golang.org/grpc v1.64.0
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (

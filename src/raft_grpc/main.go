@@ -21,39 +21,48 @@ import (
 )
 
 var (
-	myAddr = flag.String("address", "localhost:50051", "TCP host+port for this node")
-	raftId = flag.String("raft_id", "", "Node id used by Raft")
-
-	raftDir       = flag.String("raft_data_dir", "data/", "Raft data dir")
-	raftBootstrap = flag.Bool("raft_bootstrap", false, "Whether to bootstrap the Raft cluster")
+	config = flag.String("config", "", "config file path")
 )
 
 func main() {
 	flag.Parse()
 
-	if *raftId == "" {
-		log.Fatalf("flag --raft_id is required")
+	if *config == "" {
+		log.Fatalf("flag --config is required")
+	}
+	c := getConf(*config)
+
+	if c.Address == "localhost" {
+		c.Address = GetOutboundIP().String()
+		log.Printf("%s", c.Address)
+	}
+	c.Address = fmt.Sprintf("%s:%d", c.Address, c.Port)
+	homeDir, _ := os.UserHomeDir()
+	c.RaftDir = filepath.Join(homeDir, c.RaftDir, c.RaftId)
+	err := os.MkdirAll(c.RaftDir, os.ModePerm)
+	if err != nil {
+		log.Fatalf("failed to mkdir %s", c.RaftDir)
 	}
 
 	ctx := context.Background()
-	_, port, err := net.SplitHostPort(*myAddr)
+	_, port, err := net.SplitHostPort(c.Address)
 	if err != nil {
-		log.Fatalf("failed to parse local address (%q): %v", *myAddr, err)
+		log.Fatalf("failed to parse local address (%s): %v", c.Address, err)
 	}
 	sock, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	wt := &scoreTracker{}
+	st := NewScoreTracker(c)
 
-	r, tm, err := NewRaft(ctx, *raftId, *myAddr, wt)
+	r, tm, err := NewRaft(ctx, c, st)
 	if err != nil {
 		log.Fatalf("failed to start raft: %v", err)
 	}
 	s := grpc.NewServer()
 	pb.RegisterScoreServer(s, &rpcInterface{
-		scoreTracker: wt,
+		scoreTracker: st,
 		raft:         r,
 	})
 	tm.Register(s)
@@ -65,41 +74,39 @@ func main() {
 	}
 }
 
-func NewRaft(ctx context.Context, myID, myAddress string, fsm raft.FSM) (*raft.Raft, *transport.Manager, error) {
+func NewRaft(ctx context.Context, config *conf, fsm raft.FSM) (*raft.Raft, *transport.Manager, error) {
 	c := raft.DefaultConfig()
-	c.LocalID = raft.ServerID(myID)
+	c.LocalID = raft.ServerID(config.RaftId)
 
-	baseDir := filepath.Join(*raftDir, myID)
-
-	ldb, err := boltdb.NewBoltStore(filepath.Join(baseDir, "logs.dat"))
+	ldb, err := boltdb.NewBoltStore(filepath.Join(config.RaftDir, "logs.dat"))
 	if err != nil {
-		return nil, nil, fmt.Errorf(`boltdb.NewBoltStore(%q): %v`, filepath.Join(baseDir, "logs.dat"), err)
+		return nil, nil, fmt.Errorf(`boltdb.NewBoltStore(%q): %v`, filepath.Join(config.RaftDir, "logs.dat"), err)
 	}
 
-	sdb, err := boltdb.NewBoltStore(filepath.Join(baseDir, "stable.dat"))
+	sdb, err := boltdb.NewBoltStore(filepath.Join(config.RaftDir, "stable.dat"))
 	if err != nil {
-		return nil, nil, fmt.Errorf(`boltdb.NewBoltStore(%q): %v`, filepath.Join(baseDir, "stable.dat"), err)
+		return nil, nil, fmt.Errorf(`boltdb.NewBoltStore(%q): %v`, filepath.Join(config.RaftDir, "stable.dat"), err)
 	}
 
-	fss, err := raft.NewFileSnapshotStore(baseDir, 3, os.Stderr)
+	fss, err := raft.NewFileSnapshotStore(config.RaftDir, 3, os.Stderr)
 	if err != nil {
-		return nil, nil, fmt.Errorf(`raft.NewFileSnapshotStore(%q, ...): %v`, baseDir, err)
+		return nil, nil, fmt.Errorf(`raft.NewFileSnapshotStore(%q, ...): %v`, config.RaftDir, err)
 	}
 
-	tm := transport.New(raft.ServerAddress(myAddress), []grpc.DialOption{grpc.WithInsecure()})
+	tm := transport.New(raft.ServerAddress(config.Address), []grpc.DialOption{grpc.WithInsecure()})
 
 	r, err := raft.NewRaft(c, fsm, ldb, sdb, fss, tm.Transport())
 	if err != nil {
 		return nil, nil, fmt.Errorf("raft.NewRaft: %v", err)
 	}
 
-	if *raftBootstrap {
+	if config.RaftBootstrap {
 		cfg := raft.Configuration{
 			Servers: []raft.Server{
 				{
 					Suffrage: raft.Voter,
-					ID:       raft.ServerID(myID),
-					Address:  raft.ServerAddress(myAddress),
+					ID:       raft.ServerID(config.RaftId),
+					Address:  raft.ServerAddress(config.Address),
 				},
 			},
 		}
@@ -110,4 +117,13 @@ func NewRaft(ctx context.Context, myID, myAddress string, fsm raft.FSM) (*raft.R
 	}
 
 	return r, tm, nil
+}
+
+func NewScoreTracker(config *conf) *scoreTracker {
+	s := make(map[string]int32)
+	for _, player := range config.Players {
+		s[player] = int32(config.Life)
+	}
+
+	return &scoreTracker{node: config.RaftId, score: s}
 }
