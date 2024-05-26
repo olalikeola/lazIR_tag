@@ -16,3 +16,15 @@ protoc --go_out=. --go_opt=paths=source_relative \
 
 ## Compile gRPC proto in C/C++
 Refer to `CmakeLists.txt`.
+
+## Cross-compile for Raspberry Pi Zero
+```bash
+cd src/raft_grpc
+env GOOS=linux GOARCH=arm64 GOARM=6 go build -o raft_grpc
+```
+
+## Start a raft cluster
+1. Referring to config templates in `config`, prepare a config for each node.
+2. Cross-compile `raft_grpc` for Raspberry Pi Zero(referring to [section](#cross-compile-for-raspberry-pi-zero))
+3. SCP `raft_grpc` and config files to Raspberry Pi Zero
+4. On Raspberry Pi Zero, run `raft_grpc --config path_to_config`
