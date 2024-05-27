@@ -28,3 +28,10 @@ env GOOS=linux GOARCH=arm64 GOARM=6 go build -o raft_grpc
 2. Cross-compile `raft_grpc` for Raspberry Pi Zero(referring to [section](#cross-compile-for-raspberry-pi-zero))
 3. SCP `raft_grpc` and config files to Raspberry Pi Zero
 4. On Raspberry Pi Zero, run `raft_grpc --config path_to_config`
+5. On a Raspberry Pi Zero, or a device within the same network, run the following script to add all nodes into the raft cluster
+```bash
+go install github.com/Jille/raftadmin/cmd/raftadmin@latest
+raftadmin {address_of_node_name1} add_voter {node_name2} {address_of_node_name2} 0
+raftadmin --leader multi:///{address_of_node_name1},{address_of_node_name2} add_voter {node_name3} {address_of_node_name3} 0
+raftadmin --leader multi:///{address_of_node_name1},{address_of_node_name2},{address_of_node_name3} add_voter {node_name4} {address_of_node_name4} 0
+```
