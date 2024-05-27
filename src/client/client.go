@@ -1,4 +1,5 @@
 package main
+
 // #cgo CFLAGS: -g -Wall
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -44,7 +45,6 @@ func client(dns string) (*pb.ScoreClient, *grpc.ClientConn, error) {
 	return &c, conn, nil
 }
 
-
 func addRecord(c *pb.ScoreClient, shooter string, victim string) error {
 	cli := *c
 	_, err2 := cli.AddRecord(
@@ -59,7 +59,6 @@ func addRecord(c *pb.ScoreClient, shooter string, victim string) error {
 	return nil
 }
 
-
 func getRecord(c *pb.ScoreClient) (map[string]int32, error) {
 	cli := *c
 	res, err2 := cli.GetRecord(
@@ -73,6 +72,7 @@ func getRecord(c *pb.ScoreClient) (map[string]int32, error) {
 
 	return res.Score, nil
 }
+
 // TODO: how to dynamically decide user id, and how to recover from errors?
 func main() {
 	dns := "multi:///localhost:50051,localhost:50052,localhost:50053"
@@ -86,7 +86,7 @@ func main() {
 	ptr := C.malloc(C.sizeof_char * 30) // allocate 30 bytes
 	defer C.free(unsafe.Pointer(ptr))
 
-	for true {
+	for {
 		// check if user is shot
 		size := C.loop_function((*C.char)(ptr))
 		str := string(C.GoBytes(ptr, size))
