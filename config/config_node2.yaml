@@ -14,8 +14,8 @@ defaults: &defaults
 <<: *defaults
 # uncomment to overwrite defaults
 # address:
-port: 5002
-raftId: node_name2
+port: 5003
+raftId: node_name3
 # raftDir:
 # raftBootstrap:
 # life:

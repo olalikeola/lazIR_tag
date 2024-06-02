@@ -38,18 +38,16 @@ func main() {
 	defer conn.Close()
 	c := pb.NewScoreClient(conn)
 
-	fmt.Println("Varun just shot Rahul!")
-	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "Varun", Victim: "Rahul"})
+	for {
+		time.Sleep(1 * time.Second)
+		resp, err := c.GetRecord(ctx, &pb.GetRecordRequest{})
+		//convert resp to csv
+		if err == nil {
+			fmt.Println(resp.ReadAtIndex)
+			fmt.Println(resp.Score)
+		} else {
+			fmt.Println(err)
+		}
+	}
 
-	fmt.Println("Varun just shot Rahul, again!")
-	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "Varun", Victim: "Rahul"})
-
-	fmt.Println("Varun just shot Rahul, againx2!")
-	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "Varun", Victim: "Rahul"})
-
-	//sleep for 1 seconds
-	time.Sleep(1 * time.Second)
-
-	resp, err := c.GetRecord(ctx, &pb.GetRecordRequest{})
-	fmt.Println(resp)
 }
