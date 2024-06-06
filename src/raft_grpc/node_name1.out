@@ -1,48 +1,303 @@
-2024/06/05 18:47:31 config ../../config/config_bootstrap.yaml: {Address:localhost Port:5001 RaftId:node_name1 RaftDir:data RaftBootstrap:true Life:100 Players:[node_name1 node_name2 node_name3 node_name4]}
-2024/06/05 18:47:31 10.5.101.122
-2024-06-05T18:47:31.632-0700 [INFO]  raft: initial configuration: index=0 servers=[]
-2024-06-05T18:47:31.633-0700 [INFO]  raft: entering follower state: follower="Node at 10.5.101.122:5001 [Follower]" leader-address= leader-id=
-2024-06-05T18:47:33.196-0700 [WARN]  raft: heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
-2024-06-05T18:47:33.196-0700 [INFO]  raft: entering candidate state: node="Node at 10.5.101.122:5001 [Candidate]" term=2
-2024-06-05T18:47:33.206-0700 [DEBUG] raft: voting for self: term=2 id=node_name1
-2024-06-05T18:47:33.224-0700 [DEBUG] raft: calculated votes needed: needed=1 term=2
-2024-06-05T18:47:33.224-0700 [DEBUG] raft: vote granted: from=node_name1 term=2 tally=1
-2024-06-05T18:47:33.224-0700 [INFO]  raft: election won: term=2 tally=1
-2024-06-05T18:47:33.224-0700 [INFO]  raft: entering leader state: leader="Node at 10.5.101.122:5001 [Leader]"
-2024-06-05T18:51:54.661-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name8 server-addr=localhost:5008 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008}]"
-2024-06-05T18:51:54.671-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
-2024-06-05T18:51:54.685-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name7 server-addr=localhost:5007 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007}]"
-2024-06-05T18:51:54.688-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name8 localhost:5008}" next=1
-2024-06-05T18:51:54.698-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
-2024-06-05T18:51:54.705-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
-2024-06-05T18:51:54.723-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name7 localhost:5007}" next=1
-2024-06-05T18:51:54.731-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name2 server-addr=localhost:5002 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007} {Suffrage:Voter ID:node_name2 Address:localhost:5002}]"
-2024-06-05T18:51:54.732-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
-2024-06-05T18:51:54.740-0700 [INFO]  raft: added peer, starting replication: peer=node_name2
-2024-06-05T18:51:54.761-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name2 localhost:5002}" next=1
-2024-06-05T18:51:54.770-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name2 localhost:5002}"
-2024-06-05T18:51:54.770-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name10 server-addr=localhost:5010 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007} {Suffrage:Voter ID:node_name2 Address:localhost:5002} {Suffrage:Voter ID:node_name10 Address:localhost:5010}]"
-2024-06-05T18:51:54.778-0700 [INFO]  raft: added peer, starting replication: peer=node_name10
-2024-06-05T18:51:54.799-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name10 localhost:5010}" next=1
-2024-06-05T18:51:54.808-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name6 server-addr=localhost:5006 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007} {Suffrage:Voter ID:node_name2 Address:localhost:5002} {Suffrage:Voter ID:node_name10 Address:localhost:5010} {Suffrage:Voter ID:node_name6 Address:localhost:5006}]"
-2024-06-05T18:51:54.808-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name10 localhost:5010}"
-2024-06-05T18:51:54.815-0700 [INFO]  raft: added peer, starting replication: peer=node_name6
-2024-06-05T18:51:54.839-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name6 localhost:5006}" next=1
-2024-06-05T18:51:54.843-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name5 server-addr=localhost:5005 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007} {Suffrage:Voter ID:node_name2 Address:localhost:5002} {Suffrage:Voter ID:node_name10 Address:localhost:5010} {Suffrage:Voter ID:node_name6 Address:localhost:5006} {Suffrage:Voter ID:node_name5 Address:localhost:5005}]"
-2024-06-05T18:51:54.848-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name6 localhost:5006}"
-2024-06-05T18:51:54.856-0700 [INFO]  raft: added peer, starting replication: peer=node_name5
-2024-06-05T18:51:54.882-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name5 localhost:5005}" next=1
-2024-06-05T18:51:54.891-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name5 localhost:5005}"
-2024-06-05T18:51:54.894-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name9 server-addr=localhost:5009 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007} {Suffrage:Voter ID:node_name2 Address:localhost:5002} {Suffrage:Voter ID:node_name10 Address:localhost:5010} {Suffrage:Voter ID:node_name6 Address:localhost:5006} {Suffrage:Voter ID:node_name5 Address:localhost:5005} {Suffrage:Voter ID:node_name9 Address:localhost:5009}]"
-2024-06-05T18:51:54.901-0700 [INFO]  raft: added peer, starting replication: peer=node_name9
-2024-06-05T18:51:54.930-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name9 localhost:5009}" next=1
-2024-06-05T18:51:54.936-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name4 server-addr=localhost:5004 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007} {Suffrage:Voter ID:node_name2 Address:localhost:5002} {Suffrage:Voter ID:node_name10 Address:localhost:5010} {Suffrage:Voter ID:node_name6 Address:localhost:5006} {Suffrage:Voter ID:node_name5 Address:localhost:5005} {Suffrage:Voter ID:node_name9 Address:localhost:5009} {Suffrage:Voter ID:node_name4 Address:localhost:5004}]"
-2024-06-05T18:51:54.937-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name9 localhost:5009}"
-2024-06-05T18:51:54.944-0700 [INFO]  raft: added peer, starting replication: peer=node_name4
-2024-06-05T18:51:54.973-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name4 localhost:5004}" next=1
-2024-06-05T18:51:54.982-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name4 localhost:5004}"
-2024-06-05T18:51:54.984-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name11 server-addr=localhost:5011 servers="[{Suffrage:Voter ID:node_name1 Address:10.5.101.122:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007} {Suffrage:Voter ID:node_name2 Address:localhost:5002} {Suffrage:Voter ID:node_name10 Address:localhost:5010} {Suffrage:Voter ID:node_name6 Address:localhost:5006} {Suffrage:Voter ID:node_name5 Address:localhost:5005} {Suffrage:Voter ID:node_name9 Address:localhost:5009} {Suffrage:Voter ID:node_name4 Address:localhost:5004} {Suffrage:Voter ID:node_name11 Address:localhost:5011}]"
-2024-06-05T18:51:54.992-0700 [INFO]  raft: added peer, starting replication: peer=node_name11
-2024-06-05T18:51:55.023-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name11 localhost:5011}" next=1
-2024-06-05T18:51:55.032-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name11 localhost:5011}"
-Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!Node node_name1: node_name1 tried to shoot node_name2 but node_name2 is already dead!
+2024/06/05 19:53:55 config ../../config/config_bootstrap.yaml: {Address:localhost Port:5001 RaftId:node_name1 RaftDir:data RaftBootstrap:true Life:100 Players:[node_name1 node_name2 node_name3 node_name4]}
+2024/06/05 19:53:55 192.168.8.228
+2024-06-05T19:53:55.554-0700 [INFO]  raft: initial configuration: index=0 servers=[]
+2024-06-05T19:53:55.554-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:53:57.037-0700 [WARN]  raft: heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
+2024-06-05T19:53:57.038-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=2
+2024-06-05T19:53:57.048-0700 [DEBUG] raft: voting for self: term=2 id=node_name1
+2024-06-05T19:53:57.063-0700 [DEBUG] raft: calculated votes needed: needed=1 term=2
+2024-06-05T19:53:57.063-0700 [DEBUG] raft: vote granted: from=node_name1 term=2 tally=1
+2024-06-05T19:53:57.063-0700 [INFO]  raft: election won: term=2 tally=1
+2024-06-05T19:53:57.063-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:03.720-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name8 server-addr=localhost:5008 servers="[{Suffrage:Voter ID:node_name1 Address:192.168.8.228:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008}]"
+2024-06-05T19:54:03.732-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:03.745-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name8 localhost:5008}" next=1
+2024-06-05T19:54:03.749-0700 [INFO]  raft: updating configuration: command=AddVoter server-id=node_name7 server-addr=localhost:5007 servers="[{Suffrage:Voter ID:node_name1 Address:192.168.8.228:5001} {Suffrage:Voter ID:node_name8 Address:localhost:5008} {Suffrage:Voter ID:node_name7 Address:localhost:5007}]"
+2024-06-05T19:54:03.753-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:03.760-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:03.778-0700 [WARN]  raft: appendEntries rejected, sending older logs: peer="{Voter node_name7 localhost:5007}" next=1
+2024-06-05T19:54:03.787-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:04.854-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:04.890-0700 [ERROR] raft: peer has newer term, stopping replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:04.890-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:04.890-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:04.890-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:04.897-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:05.903-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=4
+2024-06-05T19:54:05.911-0700 [DEBUG] raft: voting for self: term=4 id=node_name1
+2024-06-05T19:54:05.931-0700 [DEBUG] raft: asking for vote: term=4 from=node_name8 address=localhost:5008
+2024-06-05T19:54:05.931-0700 [DEBUG] raft: asking for vote: term=4 from=node_name7 address=localhost:5007
+2024-06-05T19:54:05.931-0700 [DEBUG] raft: calculated votes needed: needed=2 term=4
+2024-06-05T19:54:05.931-0700 [DEBUG] raft: vote granted: from=node_name1 term=4 tally=1
+2024-06-05T19:54:05.969-0700 [DEBUG] raft: vote granted: from=node_name8 term=4 tally=2
+2024-06-05T19:54:05.969-0700 [INFO]  raft: election won: term=4 tally=2
+2024-06-05T19:54:05.969-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:05.969-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:05.970-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:05.972-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:05.983-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name22024-06-05T19:54:06.941-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:06.949-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:06.991-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:06.991-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:06.991-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name22024-06-05T19:54:07.969-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=6
+2024-06-05T19:54:07.978-0700 [DEBUG] raft: voting for self: term=6 id=node_name1
+2024-06-05T19:54:07.993-0700 [DEBUG] raft: asking for vote: term=6 from=node_name8 address=localhost:5008
+2024-06-05T19:54:07.993-0700 [DEBUG] raft: asking for vote: term=6 from=node_name7 address=localhost:5007
+2024-06-05T19:54:07.993-0700 [DEBUG] raft: calculated votes needed: needed=2 term=6
+2024-06-05T19:54:07.993-0700 [DEBUG] raft: vote granted: from=node_name1 term=6 tally=1
+2024-06-05T19:54:08.031-0700 [DEBUG] raft: vote granted: from=node_name7 term=6 tally=2
+2024-06-05T19:54:08.031-0700 [INFO]  raft: election won: term=6 tally=2
+2024-06-05T19:54:08.031-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:08.031-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:08.031-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:08.032-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:08.036-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name22024-06-05T19:54:08.983-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:08.990-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:09.020-0700 [ERROR] raft: peer has newer term, stopping replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:09.020-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:09.035-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:09.035-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name22024-06-05T19:54:09.997-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=8
+2024-06-05T19:54:10.007-0700 [DEBUG] raft: voting for self: term=8 id=node_name1
+2024-06-05T19:54:10.029-0700 [DEBUG] raft: asking for vote: term=8 from=node_name8 address=localhost:5008
+2024-06-05T19:54:10.030-0700 [DEBUG] raft: asking for vote: term=8 from=node_name7 address=localhost:5007
+2024-06-05T19:54:10.030-0700 [DEBUG] raft: calculated votes needed: needed=2 term=8
+2024-06-05T19:54:10.030-0700 [DEBUG] raft: vote granted: from=node_name1 term=8 tally=1
+2024-06-05T19:54:10.085-0700 [DEBUG] raft: vote granted: from=node_name8 term=8 tally=2
+2024-06-05T19:54:10.085-0700 [INFO]  raft: election won: term=8 tally=2
+2024-06-05T19:54:10.085-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:10.085-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:10.085-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:10.095-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:10.109-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:11.109-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:11.120-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:11.138-0700 [ERROR] raft: peer has newer term, stopping replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:11.141-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:11.168-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:11.168-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:12.140-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=10
+2024-06-05T19:54:12.151-0700 [DEBUG] raft: voting for self: term=10 id=node_name1
+2024-06-05T19:54:12.169-0700 [DEBUG] raft: asking for vote: term=10 from=node_name8 address=localhost:5008
+2024-06-05T19:54:12.169-0700 [DEBUG] raft: asking for vote: term=10 from=node_name7 address=localhost:5007
+2024-06-05T19:54:12.169-0700 [DEBUG] raft: calculated votes needed: needed=2 term=10
+2024-06-05T19:54:12.169-0700 [DEBUG] raft: vote granted: from=node_name1 term=10 tally=1
+2024-06-05T19:54:12.220-0700 [DEBUG] raft: vote granted: from=node_name7 term=10 tally=2
+2024-06-05T19:54:12.220-0700 [INFO]  raft: election won: term=10 tally=2
+2024-06-05T19:54:12.220-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:12.223-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:12.223-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:12.224-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:12.226-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name22024-06-05T19:54:13.155-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:13.164-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:13.192-0700 [ERROR] raft: peer has newer term, stopping replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:13.195-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:13.207-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:13.207-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name22024-06-05T19:54:14.170-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=12
+2024-06-05T19:54:14.178-0700 [DEBUG] raft: voting for self: term=12 id=node_name1
+2024-06-05T19:54:14.193-0700 [DEBUG] raft: asking for vote: term=12 from=node_name8 address=localhost:5008
+2024-06-05T19:54:14.193-0700 [DEBUG] raft: asking for vote: term=12 from=node_name7 address=localhost:5007
+2024-06-05T19:54:14.193-0700 [DEBUG] raft: calculated votes needed: needed=2 term=12
+2024-06-05T19:54:14.193-0700 [DEBUG] raft: vote granted: from=node_name1 term=12 tally=1
+2024-06-05T19:54:14.238-0700 [DEBUG] raft: vote granted: from=node_name8 term=12 tally=2
+2024-06-05T19:54:14.238-0700 [INFO]  raft: election won: term=12 tally=2
+2024-06-05T19:54:14.238-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:14.238-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:14.238-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:14.238-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:14.242-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name22024-06-05T19:54:15.194-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:15.195-0700 [DEBUG] raft: leadership transfer in progress
+2024-06-05T19:54:15.203-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:15.247-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:15.247-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:15.247-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+Node node_name1: node_name1 get 1 from node_name2Node node_name1: node_name1 get 1 from node_name22024-06-05T19:54:16.212-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=14
+2024-06-05T19:54:16.220-0700 [DEBUG] raft: voting for self: term=14 id=node_name1
+2024-06-05T19:54:16.234-0700 [DEBUG] raft: asking for vote: term=14 from=node_name8 address=localhost:5008
+2024-06-05T19:54:16.234-0700 [DEBUG] raft: asking for vote: term=14 from=node_name7 address=localhost:5007
+2024-06-05T19:54:16.234-0700 [DEBUG] raft: calculated votes needed: needed=2 term=14
+2024-06-05T19:54:16.234-0700 [DEBUG] raft: vote granted: from=node_name1 term=14 tally=1
+2024-06-05T19:54:16.277-0700 [DEBUG] raft: vote granted: from=node_name8 term=14 tally=2
+2024-06-05T19:54:16.277-0700 [INFO]  raft: election won: term=14 tally=2
+2024-06-05T19:54:16.277-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:16.277-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:16.277-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:16.285-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:16.285-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:17.226-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:17.236-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:17.282-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:17.282-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:17.282-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:18.260-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=16
+2024-06-05T19:54:18.268-0700 [DEBUG] raft: voting for self: term=16 id=node_name1
+2024-06-05T19:54:18.284-0700 [DEBUG] raft: asking for vote: term=16 from=node_name8 address=localhost:5008
+2024-06-05T19:54:18.284-0700 [DEBUG] raft: asking for vote: term=16 from=node_name7 address=localhost:5007
+2024-06-05T19:54:18.284-0700 [DEBUG] raft: calculated votes needed: needed=2 term=16
+2024-06-05T19:54:18.284-0700 [DEBUG] raft: vote granted: from=node_name1 term=16 tally=1
+2024-06-05T19:54:18.327-0700 [DEBUG] raft: vote granted: from=node_name7 term=16 tally=2
+2024-06-05T19:54:18.327-0700 [INFO]  raft: election won: term=16 tally=2
+2024-06-05T19:54:18.327-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:18.327-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:18.327-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:18.328-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:18.332-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:19.292-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:19.301-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:19.341-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:19.341-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:19.341-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:19.423-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=18
+2024-06-05T19:54:19.428-0700 [DEBUG] raft: voting for self: term=18 id=node_name1
+2024-06-05T19:54:19.443-0700 [DEBUG] raft: asking for vote: term=18 from=node_name8 address=localhost:5008
+2024-06-05T19:54:19.443-0700 [DEBUG] raft: asking for vote: term=18 from=node_name7 address=localhost:5007
+2024-06-05T19:54:19.443-0700 [DEBUG] raft: calculated votes needed: needed=2 term=18
+2024-06-05T19:54:19.443-0700 [DEBUG] raft: vote granted: from=node_name1 term=18 tally=1
+2024-06-05T19:54:19.486-0700 [DEBUG] raft: vote granted: from=node_name7 term=18 tally=2
+2024-06-05T19:54:19.486-0700 [INFO]  raft: election won: term=18 tally=2
+2024-06-05T19:54:19.486-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:19.486-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:19.486-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:19.487-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:19.491-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:20.323-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:20.330-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:20.369-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:20.369-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:20.369-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:21.356-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=20
+2024-06-05T19:54:21.365-0700 [DEBUG] raft: voting for self: term=20 id=node_name1
+2024-06-05T19:54:21.381-0700 [DEBUG] raft: asking for vote: term=20 from=node_name8 address=localhost:5008
+2024-06-05T19:54:21.381-0700 [DEBUG] raft: asking for vote: term=20 from=node_name7 address=localhost:5007
+2024-06-05T19:54:21.381-0700 [DEBUG] raft: calculated votes needed: needed=2 term=20
+2024-06-05T19:54:21.381-0700 [DEBUG] raft: vote granted: from=node_name1 term=20 tally=1
+2024-06-05T19:54:21.424-0700 [DEBUG] raft: vote granted: from=node_name8 term=20 tally=2
+2024-06-05T19:54:21.428-0700 [INFO]  raft: election won: term=20 tally=2
+2024-06-05T19:54:21.428-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:21.428-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:21.428-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:21.428-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:21.428-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:22.386-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:22.394-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:22.438-0700 [ERROR] raft: peer has newer term, stopping replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:22.439-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:22.443-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:22.443-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:23.417-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=22
+2024-06-05T19:54:23.425-0700 [DEBUG] raft: voting for self: term=22 id=node_name1
+2024-06-05T19:54:23.438-0700 [DEBUG] raft: asking for vote: term=22 from=node_name8 address=localhost:5008
+2024-06-05T19:54:23.438-0700 [DEBUG] raft: asking for vote: term=22 from=node_name7 address=localhost:5007
+2024-06-05T19:54:23.438-0700 [DEBUG] raft: calculated votes needed: needed=2 term=22
+2024-06-05T19:54:23.438-0700 [DEBUG] raft: vote granted: from=node_name1 term=22 tally=1
+2024-06-05T19:54:23.481-0700 [DEBUG] raft: vote granted: from=node_name8 term=22 tally=2
+2024-06-05T19:54:23.482-0700 [INFO]  raft: election won: term=22 tally=2
+2024-06-05T19:54:23.482-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:23.482-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:23.482-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:23.482-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:23.489-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:24.446-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:24.453-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:24.482-0700 [ERROR] raft: peer has newer term, stopping replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:24.482-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:24.497-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:24.497-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:25.477-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=24
+2024-06-05T19:54:25.485-0700 [DEBUG] raft: voting for self: term=24 id=node_name1
+2024-06-05T19:54:25.500-0700 [DEBUG] raft: asking for vote: term=24 from=node_name8 address=localhost:5008
+2024-06-05T19:54:25.500-0700 [DEBUG] raft: asking for vote: term=24 from=node_name7 address=localhost:5007
+2024-06-05T19:54:25.501-0700 [DEBUG] raft: calculated votes needed: needed=2 term=24
+2024-06-05T19:54:25.501-0700 [DEBUG] raft: vote granted: from=node_name1 term=24 tally=1
+2024-06-05T19:54:25.543-0700 [DEBUG] raft: vote granted: from=node_name8 term=24 tally=2
+2024-06-05T19:54:25.546-0700 [INFO]  raft: election won: term=24 tally=2
+2024-06-05T19:54:25.546-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:25.546-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:25.547-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:25.547-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:25.547-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:26.507-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:26.517-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:26.544-0700 [ERROR] raft: peer has newer term, stopping replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:26.544-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:26.559-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:26.559-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:27.537-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=26
+2024-06-05T19:54:27.545-0700 [DEBUG] raft: voting for self: term=26 id=node_name1
+2024-06-05T19:54:27.560-0700 [DEBUG] raft: asking for vote: term=26 from=node_name8 address=localhost:5008
+2024-06-05T19:54:27.560-0700 [DEBUG] raft: asking for vote: term=26 from=node_name7 address=localhost:5007
+2024-06-05T19:54:27.560-0700 [DEBUG] raft: calculated votes needed: needed=2 term=26
+2024-06-05T19:54:27.560-0700 [DEBUG] raft: vote granted: from=node_name1 term=26 tally=1
+2024-06-05T19:54:27.602-0700 [DEBUG] raft: vote granted: from=node_name8 term=26 tally=2
+2024-06-05T19:54:27.606-0700 [INFO]  raft: election won: term=26 tally=2
+2024-06-05T19:54:27.606-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:27.606-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:27.606-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:27.606-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:27.607-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:28.557-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:28.565-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:28.605-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:28.605-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:28.605-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:29.572-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=28
+2024-06-05T19:54:29.580-0700 [DEBUG] raft: voting for self: term=28 id=node_name1
+2024-06-05T19:54:29.595-0700 [DEBUG] raft: asking for vote: term=28 from=node_name8 address=localhost:5008
+2024-06-05T19:54:29.595-0700 [DEBUG] raft: asking for vote: term=28 from=node_name7 address=localhost:5007
+2024-06-05T19:54:29.595-0700 [DEBUG] raft: calculated votes needed: needed=2 term=28
+2024-06-05T19:54:29.595-0700 [DEBUG] raft: vote granted: from=node_name1 term=28 tally=1
+2024-06-05T19:54:29.636-0700 [DEBUG] raft: vote granted: from=node_name8 term=28 tally=2
+2024-06-05T19:54:29.636-0700 [INFO]  raft: election won: term=28 tally=2
+2024-06-05T19:54:29.636-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:29.636-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:29.636-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:29.636-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:29.644-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:30.601-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:30.609-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:30.652-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:30.652-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:30.652-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:31.643-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=30
+2024-06-05T19:54:31.653-0700 [DEBUG] raft: voting for self: term=30 id=node_name1
+2024-06-05T19:54:31.670-0700 [DEBUG] raft: asking for vote: term=30 from=node_name8 address=localhost:5008
+2024-06-05T19:54:31.670-0700 [DEBUG] raft: asking for vote: term=30 from=node_name7 address=localhost:5007
+2024-06-05T19:54:31.670-0700 [DEBUG] raft: calculated votes needed: needed=2 term=30
+2024-06-05T19:54:31.670-0700 [DEBUG] raft: vote granted: from=node_name1 term=30 tally=1
+2024-06-05T19:54:31.719-0700 [DEBUG] raft: vote granted: from=node_name8 term=30 tally=2
+2024-06-05T19:54:31.719-0700 [INFO]  raft: election won: term=30 tally=2
+2024-06-05T19:54:31.719-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:31.720-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:31.720-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:31.720-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:31.723-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:32.667-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:32.677-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:32.715-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:32.715-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:32.715-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:33.709-0700 [INFO]  raft: entering candidate state: node="Node at 192.168.8.228:5001 [Candidate]" term=32
+2024-06-05T19:54:33.717-0700 [DEBUG] raft: voting for self: term=32 id=node_name1
+2024-06-05T19:54:33.734-0700 [DEBUG] raft: asking for vote: term=32 from=node_name8 address=localhost:5008
+2024-06-05T19:54:33.734-0700 [DEBUG] raft: asking for vote: term=32 from=node_name7 address=localhost:5007
+2024-06-05T19:54:33.734-0700 [DEBUG] raft: calculated votes needed: needed=2 term=32
+2024-06-05T19:54:33.734-0700 [DEBUG] raft: vote granted: from=node_name1 term=32 tally=1
+2024-06-05T19:54:33.780-0700 [DEBUG] raft: vote granted: from=node_name8 term=32 tally=2
+2024-06-05T19:54:33.783-0700 [INFO]  raft: election won: term=32 tally=2
+2024-06-05T19:54:33.783-0700 [INFO]  raft: entering leader state: leader="Node at 192.168.8.228:5001 [Leader]"
+2024-06-05T19:54:33.783-0700 [INFO]  raft: added peer, starting replication: peer=node_name8
+2024-06-05T19:54:33.783-0700 [INFO]  raft: added peer, starting replication: peer=node_name7
+2024-06-05T19:54:33.784-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:33.784-0700 [INFO]  raft: pipelining replication: peer="{Voter node_name7 localhost:5007}"
+2024-06-05T19:54:34.749-0700 [DEBUG] raft: starting leadership transfer: id=<nil> address=<nil>
+2024-06-05T19:54:34.758-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024-06-05T19:54:34.785-0700 [ERROR] raft: peer has newer term, stopping replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:34.789-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name8 localhost:5008}"
+2024-06-05T19:54:34.800-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5001 [Follower]" leader-address= leader-id=
+2024-06-05T19:54:34.800-0700 [INFO]  raft: aborting pipeline replication: peer="{Voter node_name7 localhost:5007}"

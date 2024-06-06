@@ -11,7 +11,9 @@ n_players = 25
 for i in range(3, 11):
     #start raft cluster
 
-    os.system('python3 script/start_raft_cluster.py ' + str(i))
+    os.system('python3 script/start_raft_cluster.py ' + str(i) )
+
+    os.system('python3 script/reelection_trigger.py ' + str(i) + ' 1 > /tmp/raft_reelec 2>&1 &')
 
     #run sim
     os.chdir('/Users/varund/Desktop/q3/cs244b/project/lazIR_tag_final_final/src/sim')
@@ -20,7 +22,7 @@ for i in range(3, 11):
     cmd = 'go run sim.go'
     
     t = []
-    for _ in tqdm.tqdm(range(10)):
+    for _ in tqdm.tqdm(range(2)):
         #spawn threads which runs the cmd in parallel 20 times
         outputs = []
 
@@ -45,8 +47,10 @@ for i in range(3, 11):
 
     t = np.mean(np.array(t))
     op += [(i, t)]
+    print((i, t))
 
     os.system('kill $(pgrep -f "\-\-config")')
+    os.system('kill $(pgrep -f "reelection_trigger.py")')
     os.chdir('../..')
     os.system('sleep 1')
 
