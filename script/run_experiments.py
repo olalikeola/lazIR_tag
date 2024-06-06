@@ -7,6 +7,7 @@ def run_cmd_get_output(cmd):
     return os.popen(cmd).read()
 
 op = []
+n_players = 25
 for i in range(3, 11):
     #start raft cluster
 
@@ -23,17 +24,24 @@ for i in range(3, 11):
         #spawn threads which runs the cmd in parallel 20 times
         outputs = []
 
-        for p in range(25):
+        for p in range(n_players):
             os.system(cmd + '> /tmp/raftexp' + str(p) + '.out 2>&1 &')
         
         
-        os.system('sleep 5')
-        for p in range(25):
-            outputs += [run_cmd_get_output('cat /tmp/raftexp' + str(p) + '.out')]        
+        os.system('sleep 1')
+        while True:
+            try:
+                for p in range(n_players):
+                    outputs += [run_cmd_get_output('cat /tmp/raftexp' + str(p) + '.out')]
+                for output in outputs:
+                    t += [float(output.split('\n')[-2].split(': ')[1].strip()[:-2])]
+                break
+            except Exception as e:
+                outputs = []
+                os.system('sleep 1')
 
-        for output in outputs:
-            print("output: " + output)
-            t += [float(output.split('\n')[-2].split(': ')[1].strip()[:-2])]
+
+        
 
     t = np.mean(np.array(t))
     op += [(i, t)]
