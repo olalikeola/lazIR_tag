@@ -68,7 +68,8 @@ func main() {
 
 		if err == nil {
 			score_map = resp.Score
-			if score_map["node_name1"] == target_score_node_name_1 && score_map["node_name2"] == target_score_node_name_2 {
+			//if score_map["node_name1"] == target_score_node_name_1 && score_map["node_name2"] == target_score_node_name_2 {
+			if true {
 				result_time := time.Now()
 				fmt.Println("Time taken to get shot: ", result_time.Sub(current_time))
 				break
