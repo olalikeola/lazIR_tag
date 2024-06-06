@@ -7,12 +7,7 @@ import matplotlib.cm as cm
 import numpy as np
 
 current_read_index = 0
-player_name_map = {
-    "node_name1": "varun",
-    "node_name2": "pino",
-    "node_name3": "zihao",
-    "node_name4": "ola",
-}
+
 
 def update(frame):
     global current_read_index
@@ -27,7 +22,7 @@ def update(frame):
         colors = cm.viridis(np.linspace(0, 1, len(scores)))
 
         # Plot the bar chart
-        bars = plt.bar(list(map(lambda k: player_name_map[k], scores.keys())), scores.values(), color=colors, width=0.6)
+        bars = plt.bar(scores.keys(), scores.values(), color=colors, width=0.6)
 
         # Add value labels on top of the bars
         for bar in bars:
@@ -46,5 +41,6 @@ def update(frame):
     else:
         current_read_index = int(line.strip())
 
-ani = FuncAnimation(plt.gcf(), update, interval=1000)
+ani = FuncAnimation(plt.gcf(), update, interval=10)
+
 plt.show()

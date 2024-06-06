@@ -1,0 +1,22 @@
+defaults: &defaults
+  address: localhost
+  port: 5001
+  raftId: node_name1
+  raftDir: data
+  raftBootstrap: false
+  life: 100
+  players:
+    - node_name1
+    - node_name2
+    - node_name3
+    - node_name4
+
+<<: *defaults
+# uncomment to overwrite defaults
+# address:
+port: 5010
+raftId: node_name10
+# raftDir:
+# raftBootstrap:
+# life:
+# players:

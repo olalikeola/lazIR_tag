@@ -5,7 +5,6 @@ import (
 	"log"
 	"net"
 
-	"golang.org/x/exp/slices"
 	"gopkg.in/yaml.v3"
 )
 
@@ -32,9 +31,9 @@ func getConf(filepath string) (c *conf) {
 
 	log.Printf("config %s: %+v\n", filepath, *c)
 
-	if !slices.Contains(c.Players, c.RaftId) {
-		log.Fatalf("raftId %s not in players %v", c.RaftId, c.Players)
-	}
+	//if !slices.Contains(c.Players, c.RaftId) {
+	//	log.Fatalf("raftId %s not in players %v", c.RaftId, c.Players)
+	//}
 
 	return c
 }

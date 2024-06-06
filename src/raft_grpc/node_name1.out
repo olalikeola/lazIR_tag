@@ -1,0 +1,12 @@
+2024/06/05 16:39:55 config ../../config/config_bootstrap.yaml: {Address:localhost Port:5001 RaftId:node_name1 RaftDir:data RaftBootstrap:true Life:100 Players:[node_name1 node_name2 node_name3 node_name4]}
+2024/06/05 16:39:55 10.34.185.130
+2024-06-05T16:39:55.895-0700 [INFO]  raft: initial configuration: index=0 servers=[]
+2024-06-05T16:39:55.895-0700 [INFO]  raft: entering follower state: follower="Node at 10.34.185.130:5001 [Follower]" leader-address= leader-id=
+2024-06-05T16:39:57.269-0700 [WARN]  raft: heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
+2024-06-05T16:39:57.269-0700 [INFO]  raft: entering candidate state: node="Node at 10.34.185.130:5001 [Candidate]" term=2
+2024-06-05T16:39:57.278-0700 [DEBUG] raft: voting for self: term=2 id=node_name1
+2024-06-05T16:39:57.296-0700 [DEBUG] raft: calculated votes needed: needed=1 term=2
+2024-06-05T16:39:57.296-0700 [DEBUG] raft: vote granted: from=node_name1 term=2 tally=1
+2024-06-05T16:39:57.296-0700 [INFO]  raft: election won: term=2 tally=1
+2024-06-05T16:39:57.296-0700 [INFO]  raft: entering leader state: leader="Node at 10.34.185.130:5001 [Leader]"
+signal: interrupt

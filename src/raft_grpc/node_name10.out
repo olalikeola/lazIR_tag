@@ -1,0 +1,7 @@
+2024/06/05 16:38:42 config ../../config/config_node9.yaml: {Address:localhost Port:5010 RaftId:node_name10 RaftDir:data RaftBootstrap:false Life:100 Players:[node_name1 node_name2 node_name3 node_name4]}
+2024/06/05 16:38:42 10.34.185.130
+2024-06-05T16:38:42.519-0700 [INFO]  raft: initial configuration: index=0 servers=[]
+2024-06-05T16:38:42.519-0700 [INFO]  raft: entering follower state: follower="Node at 10.34.185.130:5010 [Follower]" leader-address= leader-id=
+2024-06-05T16:38:43.624-0700 [WARN]  raft: no known peers, aborting election
+2024-06-05T16:38:51.270-0700 [WARN]  raft: failed to get previous log: previous-index=6 last-index=0 error="log not found"
+Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2Node node_name10: node_name1 get 1 from node_name2

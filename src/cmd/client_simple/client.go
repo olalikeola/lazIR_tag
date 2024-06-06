@@ -39,13 +39,13 @@ func main() {
 	c := pb.NewScoreClient(conn)
 
 	fmt.Println("Varun just shot Rahul!")
-	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "Varun", Victim: "Rahul"})
+	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "node_name1", Victim: "node_name2"})
 
 	fmt.Println("Varun just shot Rahul, again!")
-	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "Varun", Victim: "Rahul"})
+	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "node_name1", Victim: "node_name3"})
 
 	fmt.Println("Varun just shot Rahul, againx2!")
-	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "Varun", Victim: "Rahul"})
+	c.AddRecord(ctx, &pb.AddRecordRequest{Shooter: "node_name2", Victim: "node_name3"})
 
 	//sleep for 1 seconds
 	time.Sleep(1 * time.Second)
