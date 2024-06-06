@@ -40,6 +40,7 @@ def update(frame):
         plt.figtext(0.95, 0.05, f"idx: {current_read_index}", ha='center', fontsize=8, style='italic')
     else:
         current_read_index = int(line.strip())
+        print(current_read_index)
 
 ani = FuncAnimation(plt.gcf(), update, interval=10)
 

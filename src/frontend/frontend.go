@@ -24,7 +24,7 @@ func main() {
 		grpc_retry.WithMax(5),
 	}
 
-	conn, err := grpc.Dial("multi:///localhost:5001,localhost:5002,localhost:5003",
+	conn, err := grpc.Dial("multi:///192.168.8.160:5001,192.168.8.167:5001,192.168.8.103:5001,192.168.8.151:5001",
 		grpc.WithDefaultServiceConfig(serviceConfig), grpc.WithInsecure(),
 		grpc.WithDefaultCallOptions(grpc.WaitForReady(true)),
 		grpc.WithUnaryInterceptor(grpc_retry.UnaryClientInterceptor(retryOpts...)))
