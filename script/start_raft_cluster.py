@@ -18,6 +18,9 @@ config_files = os.listdir('config')
 n_servers = 6
 if(len(sys.argv) > 1):
     n_servers = int(sys.argv[1])
+
+if (len(sys.argv) > 2):
+    reelection_int = float(sys.argv[2])
     
 config_files.remove("config_bootstrap.yaml")
 config_files = ["config_bootstrap.yaml"] + config_files[:n_servers-1]
@@ -60,7 +63,18 @@ while(len(config_files)):
     names.append(name)
     config_files.remove(config_file)
 
+reelection_count = 0
+
+while (len(sys.argv) > 2):
+    os.sleep(reelection_int)
+    print('********REELECTION**********')
+    cmd = "raftadmin --leader multi:///"+ ",".join(addr_list) + " leadership_transfer"
+    os.system(cmd)
+    reelection_count += 1
+    
+
 # upon catch ctrl+c kill all children and exit
 def signal_handler(sig, frame):
     os.system('kill $(pgrep -f \-\-config')
+    print(f'{reelection_count=}')
     sys.exit(0)
