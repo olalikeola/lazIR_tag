@@ -37,7 +37,7 @@ for config_file in config_files:
     os.system(cmd)
 
 #sleep for 10 seconds
-input()
+time.sleep(5)
 os.chdir('../../config')
 leader_config = "config_bootstrap.yaml"
 config_files.remove(leader_config)

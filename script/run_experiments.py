@@ -1,22 +1,33 @@
 import os
 import numpy as np
+import pandas as pd
 import tqdm 
 import multiprocessing
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--n_players', type=int, required=True, help='num of players')
+parser.add_argument('--n_nodes', type=int, required=True, help='num nodes')
+parser.add_argument('--node_failure', action='store_true')
+args = parser.parse_args()
 
 def run_cmd_get_output(cmd):
     return os.popen(cmd).read()
 
-op = []
-n_players = 25
-for i in range(3, 11):
+n_players = args.n_players
+n_nodes = args.n_nodes
+node_failure = args.node_failure
+
+op = {'n_players': n_players}
+
+for i in range(3, n_nodes + 1):
     #start raft cluster
 
     os.system('python3 script/start_raft_cluster.py ' + str(i) )
-
-    os.system('python3 script/reelection_trigger.py ' + str(i) + ' 1 > /tmp/raft_reelec 2>&1 &')
+    
 
     #run sim
-    os.chdir('/Users/varund/Desktop/q3/cs244b/project/lazIR_tag_final_final/src/sim')
+    os.chdir('/Users/pinocholsaipant/Documents/CS244b/lazIR_tag/src/sim')
 
     #get output of cmd
     cmd = 'go run sim.go'
@@ -46,14 +57,18 @@ for i in range(3, 11):
         
 
     t = np.mean(np.array(t))
-    op += [(i, t)]
+    op[str(i)] = t
     print((i, t))
-
+    # os.system('pgrep -f "\-\-config"')
     os.system('kill $(pgrep -f "\-\-config")')
-    os.system('kill $(pgrep -f "reelection_trigger.py")')
     os.chdir('../..')
     os.system('sleep 1')
 
 print("results: ")
 print(op)
+
+res = pd.read_csv(f'script/sim_results/{node_failure=}.csv', index_col=False)
+res.loc[len(res)] = op
+res.to_csv(f'script/sim_results/{node_failure=}.csv', index=False)
+
 
