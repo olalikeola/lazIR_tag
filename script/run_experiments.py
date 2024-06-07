@@ -1,6 +1,7 @@
-import os
 import numpy as np
+import os
 import pandas as pd
+import time
 import tqdm 
 import multiprocessing
 import argparse
@@ -23,7 +24,16 @@ op = {'n_players': n_players}
 for i in range(3, n_nodes + 1):
     #start raft cluster
 
-    os.system('python3 script/start_raft_cluster.py ' + str(i) )
+    cmd = 'python3 script/start_raft_cluster.py ' + str(i)
+    if node_failure:
+        cmd += ' 0.1'
+    else:
+        cmd += ' -1'
+    cmd += ' > /tmp/raftexp.out 2>&1 &'
+    print("running: " + cmd)
+    os.system(cmd)
+    time.sleep(10)
+
     
 
     #run sim
@@ -33,7 +43,7 @@ for i in range(3, n_nodes + 1):
     cmd = 'go run sim.go'
     
     t = []
-    for _ in tqdm.tqdm(range(2)):
+    for _ in tqdm.tqdm(range(20)):
         #spawn threads which runs the cmd in parallel 20 times
         outputs = []
 
@@ -60,7 +70,10 @@ for i in range(3, n_nodes + 1):
     op[str(i)] = t
     print((i, t))
     # os.system('pgrep -f "\-\-config"')
+    print("first kill")
     os.system('kill $(pgrep -f "\-\-config")')
+    print("second kill")
+    os.system('kill $(pgrep -f "start_raft_cluster")')
     os.chdir('../..')
     os.system('sleep 1')
 

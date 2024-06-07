@@ -1,37 +1,7 @@
-2024/06/05 19:53:55 config ../../config/config_node6.yaml: {Address:localhost Port:5007 RaftId:node_name7 RaftDir:data RaftBootstrap:false Life:100 Players:[node_name1 node_name2 node_name3 node_name4]}
-2024/06/05 19:53:55 192.168.8.228
-2024-06-05T19:53:55.682-0700 [INFO]  raft: initial configuration: index=0 servers=[]
-2024-06-05T19:53:55.682-0700 [INFO]  raft: entering follower state: follower="Node at 192.168.8.228:5007 [Follower]" leader-address= leader-id=
-2024-06-05T19:53:57.475-0700 [WARN]  raft: no known peers, aborting election
-2024-06-05T19:54:03.778-0700 [WARN]  raft: failed to get previous log: previous-index=4 last-index=0 error="log not found"
-2024-06-05T19:54:04.900-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:05.932-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name22024-06-05T19:54:06.973-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name22024-06-05T19:54:07.993-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name22024-06-05T19:54:09.020-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name22024-06-05T19:54:10.034-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:11.138-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:12.169-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name22024-06-05T19:54:13.192-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name22024-06-05T19:54:14.194-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name22024-06-05T19:54:15.231-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name22024-06-05T19:54:16.234-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:17.264-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:18.284-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:19.326-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:19.443-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:20.354-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:21.381-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:22.422-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:23.438-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:24.482-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:25.501-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:26.544-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:27.560-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:28.590-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:29.595-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:30.636-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:31.670-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:32.705-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:33.735-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
-2024-06-05T19:54:34.785-0700 [DEBUG] raft: lost leadership because received a requestVote with a newer term
+2024/06/06 23:02:43 config ../../config/config_node6.yaml: {Address:localhost Port:5007 RaftId:node_name7 RaftDir:data RaftBootstrap:false Life:100 Players:[node_name1 node_name2 node_name3 node_name4]}
+2024/06/06 23:02:43 10.28.2.20
+2024-06-06T23:02:43.167-0700 [INFO]  raft: initial configuration: index=0 servers=[]
+2024-06-06T23:02:43.167-0700 [INFO]  raft: entering follower state: follower="Node at 10.28.2.20:5007 [Follower]" leader-address= leader-id=
+2024-06-06T23:02:44.930-0700 [WARN]  raft: no known peers, aborting election
+2024-06-06T23:02:46.964-0700 [WARN]  raft: failed to get previous log: previous-index=4 last-index=0 error="log not found"
+Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2Node node_name7: node_name1 get 1 from node_name2

@@ -43,5 +43,7 @@ first_cmd = "raftadmin " + addr_list[0] + " add_voter " + names[1] + " " + addr_
 while (len(sys.argv) > 2):
     time.sleep(reelection_int)
     print('********REELECTION**********')
+    
     cmd = "raftadmin --leader multi:///"+ ",".join(addr_list) + " leadership_transfer"
+    print(cmd)
     os.system(cmd)
