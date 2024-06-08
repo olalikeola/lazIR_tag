@@ -42,7 +42,7 @@ os.system('rm -rf ~/data/*')
 #start raft cluster, one node at a time
 os.chdir('src/raft_grpc')
 for config_file in config_files:
-    cmd = 'go run *.go --config ../../config/' + config_file + ' > ' + get_name('../../config/' + config_file) + '.out' + ' 2>&1 &'
+    cmd = 'go run *.go --config ../../config/' + config_file + ' > ' + 'out/' + get_name('../../config/' + config_file) + '.out' + ' 2>&1 &'
     print("running: " + cmd)
     os.system(cmd)
 
