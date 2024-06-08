@@ -17,6 +17,7 @@ def update(frame):
         print(scores)
 
         plt.cla()
+        plt.clf()
         
         # Use a color map
         colors = cm.viridis(np.linspace(0, 1, len(scores)))

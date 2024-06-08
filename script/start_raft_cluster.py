@@ -59,7 +59,7 @@ names = []
 addr_list += [get_addr_port(leader_config), get_addr_port(other_config)]
 names += [get_name(leader_config), get_name(other_config)]
 first_cmd = "raftadmin " + addr_list[0] + " add_voter " + names[1] + " " + addr_list[1] + " 0"
-
+input()
 print("running: " + first_cmd)
 os.system(first_cmd)
 while(len(config_files)):
